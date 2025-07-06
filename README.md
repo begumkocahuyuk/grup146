@@ -17,7 +17,7 @@
 
 ## 👥 Takım Üyeleri
 
-| ![Boş](https://via.placeholder.com/1) | **İsim** | **Rol** | **LinkedIn** |
+| | **İsim** | **Rol** | **LinkedIn** |
 |---|---|---|---|
 | <img src="./assets/sedef.jpeg" width="100"/> | **Sedef** | Ürün Sahibi | [LinkedIn](https://www.linkedin.com/in/merve-yagiz) |
 | <img src="./assets/begum.jpeg" width="100"/> | **Begüm** | Scrum Master | [LinkedIn](https://www.linkedin.com/in/begumbeyzakocahuyuk) |
