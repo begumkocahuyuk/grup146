@@ -22,8 +22,8 @@
 | <img src="./assets/sedef.jpeg" width="100"/> | **Merve** | Ürün Sahibi | [LinkedIn](https://www.linkedin.com/in/merve-yagiz) |
 | <img src="./assets/begum.jpeg" width="100"/> | **Begüm** | Scrum Master | [LinkedIn](https://www.linkedin.com/in/begumbeyzakocahuyuk) |
 | <img src="./assets/merve.jpeg" width="100"/> | **Sedef** | Geliştirici | [LinkedIn](https://www.linkedin.com/in/sedef-yıldırımci) |
-| <img src="./assets/begum.jpg" width="100"/> | **Deniz** | Geliştirici | [LinkedIn](https://www.linkedin.com/in/begum-linkedin) |
-| <img src="./assets/alpay.jpg" width="100"/> | **Alpay** | Geliştirici | [LinkedIn](https://www.linkedin.com/in/alpay-linkedin) |
+| <img src="./assets/begum.jpg" width="100"/> | **Deniz** | Geliştirici | 
+| <img src="./assets/alpay.jpg" width="100"/> | **Alpay** | Geliştirici | 
 
 ---
 
