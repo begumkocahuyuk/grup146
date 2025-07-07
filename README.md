@@ -70,13 +70,6 @@ Sprint 1’de temel altyapıların hazırlanması, kullanıcı hikâyelerinin ne
 
 ---
 
-### 🗂️ Kullanılan Trello Panosu
-<p align="center">
-  <img src="./assets/sprint1-board.jpeg" alt="Sprint 1 Trello Panosu" width="800"/>
-</p>
-
----
-
 ### ✅ Tamamlananlar (Done):
 - Kullanıcı hikayeleri yazıldı
 - Proje yapı/mimari planı oluşturuldu
