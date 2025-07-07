@@ -69,6 +69,8 @@ Sprint 1’de temel altyapıların hazırlanması, kullanıcı hikâyelerinin ne
 > Puanlama, işin karmaşıklığı, veri miktarı, teknik zorluk ve bağımlılıklar göz önüne alınarak belirlenmiştir. Küçük işler: 3 puan, orta işler: 5–8 puan, karmaşık işler: 13 puan üzerinden hesaplandı.
 
 ---
+### 🎯 Daily  Scrum:
+Daily Scrum toplantılarının Google Meet veya Zoom üzerinden yapılması kararlaştırılmıştır. Daily Scrum toplantımız Imgur'a eklenmiştir.:https://imgur.com/a/EMr6MK5
 
 ### ✅ Tamamlananlar (Done):
 - Kullanıcı hikayeleri yazıldı
