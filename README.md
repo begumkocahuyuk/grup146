@@ -58,30 +58,73 @@ npm start
 
 ---
 
-## 📋 Sprint 1 – Özeti
+## 📋 Sprint 1
 
-### ✅ Yapılanlar:
-- Kullanıcı hikayeleri yazıldı
-- Proje yapısı ve mimarisi oluşturuldu
-- Örnek hasta raporları toplandı (anonimleştirilmiş)
-- Geliştirme ortamı kuruldu
-- Takım rolleri belirlendi
-- UI/UX tasarımına başlandı
-- Semptom verisi ön işlemeye alındı
-- Anonimleştirme algoritması test edildi
-- İlk modelleme yapıldı (hastalık-sıklık-zaman ilişkisi)
+### 🎯 Sprint Hedefi:
+Sprint 1’de temel altyapıların hazırlanması, kullanıcı hikâyelerinin netleştirilmesi ve anonimleştirme algoritmalarının temel prototiplerinin oluşturulması hedeflenmiştir.
 
-### 🛠 Devam Edenler:
-- NLP tabanlı semptom sınıflandırma modülü
-- Harita altyapısı üzerinde lokasyon verisi oturtulması
-- Doktor paneli için uyarı sistemi prototipi
-- Wireframe çizimleri
+### 🔢 Tahmini Puan: 60  
+### ✅ Gerçekleşen Puan: 45  
 
-### ❌ Reddedilen Fikirler:
-- Mobil uygulama olarak tasarlama fikri
-- E-posta yerine push notification tercihi
+> Puanlama, işin karmaşıklığı, veri miktarı, teknik zorluk ve bağımlılıklar göz önüne alınarak belirlenmiştir. Küçük işler: 3 puan, orta işler: 5–8 puan, karmaşık işler: 13 puan üzerinden hesaplandı.
 
 ---
+
+### 🗂️ Kullanılan Trello Panosu
+<p align="center">
+  <img src="./assets/sprint1-board.jpeg" alt="Sprint 1 Trello Panosu" width="800"/>
+</p>
+
+---
+
+### ✅ Tamamlananlar (Done):
+- Kullanıcı hikayeleri yazıldı
+- Proje yapı/mimari planı oluşturuldu
+- Anonimleştirilmiş örnek raporlar toplandı
+- Geliştirme ortamı kuruldu
+- Takım rolleri belirlendi
+
+### 🔧 Devam Edenler (In Progress):
+- Semptom verisinin ön işlenmesi
+- Anonimleştirme algoritmasının testleri
+- İlk modelleme (hastalık - zaman - sıklık ilişkisi)
+- UI/UX tasarımının Figma üzerinden devamı
+
+### 📌 Yapılacaklar (To Do):
+- Hasta verilerinden PII bilgilerin çıkarılması (isim, TC vs.)
+- Heatmap için örnek veri hazırlanması
+- NLP ile semptom sınıflandırma altyapısı kurulması
+- Kullanıcı arayüzü wireframe çizimleri
+- Doktor paneli uyarı mekanizması
+- Lokasyon verisinin harita üzerinde oturtulması
+
+### ❌ Reddedilenler (Rejected):
+- Mobil uygulama olarak tasarlanması
+- E-posta uyarısı yerine push notification tercih edildi
+
+---
+
+### 🧐 Sprint Review
+- Demo başarıyla tamamlandı ve ürün sahibine sunuldu.
+- UI/UX ilk versiyonu onaylandı.
+- Anonimleştirme mantığı demo üzerinden anlatıldı.
+- Geri bildirim: Harita üzerinde görsellik geliştirilmeli, NLP çıktıları sprint 2’ye taşınmalı.
+
+---
+
+### 🔁 Sprint Retrospective
+
+**İyi Gidenler:**
+- Takım içi görev paylaşımı
+- Trello üzerinden görev takibi disiplinli yürütüldü
+
+**İyileştirme Gerekenler:**
+- Kartlar daha modüler/parçalı tanımlanmalı
+- Puanlama planlamadan önce netleştirilmeli
+
+**Kararlaştırılan Aksiyonlar:**
+- Günlük 15 dk stand-up zorunlu hale getirildi
+- UI kararları sprint başında ortaklaşa netleştirilecek
 
 ## 🧭 Trello Sprint Panosu (Sprint 1)
 
