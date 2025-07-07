@@ -70,7 +70,7 @@ Sprint 1’de temel altyapıların hazırlanması, kullanıcı hikâyelerinin ne
 
 ---
 ### 🎯 Daily  Scrum:
-Daily Scrum toplantılarının Google Meet veya Zoom üzerinden yapılması kararlaştırılmıştır. Daily Scrum toplantımız Imgur'a eklenmiştir.:https://imgur.com/a/EMr6MK5
+Daily Scrum toplantılarının Google Meet veya Zoom üzerinden yapılması kararlaştırılmıştır. Daily Scrum toplantımız Imgur'a eklenmiştir.[Ekran Görüntüleri için buraya tıklayın](https://imgur.com/a/EMr6MK5)
 
 ### ✅ Tamamlananlar (Done):
 - Kullanıcı hikayeleri yazıldı
