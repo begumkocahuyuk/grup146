@@ -1,0 +1,6 @@
+# Virtual environment folders
+venv/
+env/
+ENV/
+.venv/
+ner_project_env
