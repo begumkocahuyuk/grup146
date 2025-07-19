@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Uyarı Paneli – Hastalık Takip Sistemi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f7fafc;
+      padding: 40px;
+      color: #2d3748;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      color: #2c5282;
+      margin-bottom: 40px;
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #3182ce;
+      margin-top: 50px;
+      margin-bottom: 25px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    thead {
+      background-color: #e53e3e; /* Kırmızı tonu, aciliyet hissi için */
+      color: white;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    tbody tr:hover {
+      background-color: #edf2f7;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 25px;
+      background: #2b6cb0;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #2c5282;
+    }
+
+    /* Durum Etiketleri */
+    .status-badge {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 0.85em;
+        color: white;
+        text-transform: uppercase;
+    }
+    .status-critical { background-color: #e53e3e; } /* Kırmızı */
+    .status-high { background-color: #dd6b20; }    /* Turuncu */
+    .status-medium { background-color: #3182ce; }   /* Mavi */
+    .status-info { background-color: #38a169; }     /* Yeşil */
+
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      th, td {
+        padding: 10px;
+      }
+      .container {
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      .back-button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+      }
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+      tr { border: 1px solid #ccc; margin-bottom: 10px; border-radius: 8px; }
+      td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+      }
+      td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 600;
+      }
+      td:nth-of-type(1):before { content: "Uyarı Tipi"; }
+      td:nth-of-type(2):before { content: "Bölge"; }
+      td:nth-of-type(3):before { content: "Tarih/Saat"; }
+      td:nth-of-type(4):before { content: "Durum"; }
+      td:nth-of-type(5):before { content: "Tetiklenme Koşulu"; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="dashboard.html" class="back-button">← Geri Dön</a>
+    <h1>🚨 Uyarı Paneli</h1>
+
+    <h2>Aktif Sistem Uyarıları</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Uyarı Tipi</th>
+          <th>Bölge</th>
+          <th>Tarih/Saat</th>
+          <th>Durum</th>
+          <th>Tetiklenme Koşulu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Vaka Artışı</td>
+          <td>İstanbul / Fatih</td>
+          <td>19.07.2025 14:30</td>
+          <td><span class="status-critical status-badge">KRİTİK</span></td>
+          <td>Son 24 saatte vaka sayısı %30 arttı.</td>
+        </tr>
+        <tr>
+          <td>Yoğun Semptom</td>
+          <td>İzmir / Konak</td>
+          <td>19.07.2025 11:45</td>
+          <td><span class="status-high status-badge">YÜKSEK</span></td>
+          <td>'Boğaz Ağrısı' semptomunda belirgin artış.</td>
+        </tr>
+        <tr>
+          <td>Yeni Bölge Riski</td>
+          <td>Ankara / Mamak</td>
+          <td>18.07.2025 22:10</td>
+          <td><span class="status-medium status-badge">ORTA</span></td>
+          <td>Yeni vaka kümelenmesi tespit edildi.</td>
+        </tr>
+        <tr>
+          <td>Bilgilendirme</td>
+          <td>Genel</td>
+          <td>18.07.2025 09:00</td>
+          <td><span class="status-info status-badge">BİLGİ</span></td>
+          <td>Güncel semptom analizi raporu hazır.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Tanımlanmış Uyarı Kuralları</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Kural Adı</th>
+          <th>Kritik Eşik</th>
+          <th>Uyarılacaklar</th>
+          <th>Aktif</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bölgesel Vaka Artışı</td>
+          <td>Vaka sayısı 24 saatte %25 artarsa</td>
+          <td>İl Sağlık Müdürlüğü, Bölge Doktorları</td>
+          <td>Evet</td>
+        </tr>
+        <tr>
+          <td>Nadir Semptom Yayılımı</td>
+          <td>Yeni bir semptom 48 saatte >10 vaka olursa</td>
+          <td>Uzman Doktorlar, Halk Sağlığı</td>
+          <td>Evet</td>
+        </tr>
+        <tr>
+          <td>Yoğunluk Bildirimi</td>
+          <td>Tek bir ilçede >50 aktif vaka olursa</td>
+          <td>Tüm Sistem Kullanıcıları</td>
+          <td>Hayır</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</body>
+</html>
