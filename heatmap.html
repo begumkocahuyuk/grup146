@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Isı Haritası – Hastalık Takip Sistemi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px; /* Genel font boyutunu küçült */
+      background-color: #f7fafc;
+      padding: 40px;
+      color: #2d3748;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px; /* Ana başlık font boyutunu küçült */
+      color: #2c5282;
+      margin-bottom: 40px;
+      font-weight: 700; /* Font ağırlığını biraz düşür */
+    }
+
+    h2 {
+      font-size: 22px; /* Alt başlık font boyutunu küçült */
+      color: #3182ce;
+      margin-top: 50px;
+      margin-bottom: 20px; /* Boşluğu azalt */
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px; /* Padding'i azalt */
+      font-weight: 600; /* Font ağırlığını düşür */
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04); /* Gölgeyi hafiflet */
+      border-radius: 10px; /* Köşe yuvarlaklığını hafiflet */
+      overflow: hidden;
+      margin-bottom: 25px; /* Boşluğu azalt */
+    }
+
+    thead {
+      background-color: #3182ce;
+      color: white;
+    }
+
+    th, td {
+      padding: 12px; /* Hücre padding'ini küçült */
+      font-size: 0.95em; /* Tablo metin font boyutunu küçült */
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    tbody tr:hover {
+      background-color: #edf2f7;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 20px; /* Boşluğu azalt */
+      background: #2b6cb0;
+      color: white;
+      padding: 10px 18px; /* Padding'i küçült */
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #2c5282;
+    }
+
+    .chart-container {
+      background: white;
+      padding: 20px; /* Padding'i küçült */
+      border-radius: 10px; /* Köşe yuvarlaklığını hafiflet */
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04); /* Gölgeyi hafiflet */
+      margin-bottom: 35px; /* Boşluğu azalt */
+    }
+
+    /* Google Harita Stilleri */
+    #map {
+      height: 450px; /* Haritanın yüksekliğini biraz küçült */
+      width: 100%;
+      border-radius: 10px; /* Köşe yuvarlaklığını hafiflet */
+      margin-bottom: 35px; /* Boşluğu azalt */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Gölgeyi hafiflet */
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 15px; /* Mobil padding'i azalt */
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      th, td {
+        padding: 8px; /* Mobil hücre padding'i */
+        font-size: 0.9em; /* Mobil tablo metin boyutu */
+      }
+      .container {
+        padding: 10px;
+      }
+      #map {
+        height: 300px; /* Mobil cihazlarda daha kısa harita */
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 20px;
+      }
+      h2 {
+        font-size: 16px;
+      }
+      .back-button {
+        padding: 8px 12px;
+        font-size: 0.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="dashboard.html" class="back-button">← Geri Dön</a>
+    <h1>🗺️ Bölgesel Hastalık Durumu (Isı Haritası)</h1>
+
+    <div id="map"></div>
+
+    <hr>
+    <h2>📍 İstanbul Güncel Durum</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>İlçe</th>
+          <th>Tarih</th>
+          <th>Vaka Sayısı</th>
+          <th>Semptomlar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Kadıköy</td>
+          <td>18.07.2025</td>
+          <td>23</td>
+          <td>Öksürük, Ateş</td>
+        </tr>
+        <tr>
+          <td>Beşiktaş</td>
+          <td>18.07.2025</td>
+          <td>19</td>
+          <td>Boğaz Ağrısı, Halsizlik</td>
+        </tr>
+        <tr>
+          <td>Şişli</td>
+          <td>18.07.2025</td>
+          <td>15</td>
+          <td>Yüksek Ateş</td>
+        </tr>
+        <tr>
+          <td>Fatih</td>
+          <td>18.07.2025</td>
+          <td>28</td>
+          <td>Öksürük, Baş Ağrısı</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="chart-container">
+      <canvas id="istanbulChart"></canvas>
+    </div>
+
+    <hr>
+    <h2>📍 İzmir Güncel Durum</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>İlçe</th>
+          <th>Tarih</th>
+          <th>Vaka Sayısı</th>
+          <th>Semptomlar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Karşıyaka</td>
+          <td>18.07.2025</td>
+          <td>12</td>
+          <td>Yüksek Ateş, Halsizlik</td>
+        </tr>
+        <tr>
+          <td>Bornova</td>
+          <td>18.07.2025</td>
+          <td>10</td>
+          <td>Öksürük</td>
+        </tr>
+        <tr>
+          <td>Konak</td>
+          <td>18.07.2025</td>
+          <td>14</td>
+          <td>Boğaz Ağrısı</td>
+        </tr>
+        <tr>
+          <td>Buca</td>
+          <td>18.07.2025</td>
+          <td>8</td>
+          <td>Ateş</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="chart-container">
+      <canvas id="izmirChart"></canvas>
+    </div>
+
+    <hr>
+    <h2>📍 Ankara Güncel Durum</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>İlçe</th>
+          <th>Tarih</th>
+          <th>Vaka Sayısı</th>
+          <th>Semptomlar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Çankaya</td>
+          <td>18.07.2025</td>
+          <td>17</td>
+          <td>Boğaz Ağrısı</td>
+        </tr>
+        <tr>
+          <td>Keçiören</td>
+          <td>18.07.2025</td>
+          <td>11</td>
+          <td>Öksürük, Halsizlik</td>
+        </tr>
+        <tr>
+          <td>Yenimahalle</td>
+          <td>18.07.2025</td>
+          <td>9</td>
+          <td>Ateş</td>
+        </tr>
+        <tr>
+          <td>Mamak</td>
+          <td>18.07.2025</td>
+          <td>13</td>
+          <td>Baş Ağrısı</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="chart-container">
+      <canvas id="ankaraChart"></canvas>
+    </div>
+
+    <hr>
+    <h2>Türkiye Genelinde Şehir Karşılaştırması</h2>
+    <table>
+        <thead>
+          <tr>
+            <th>Şehir</th>
+            <th>Toplam Vaka Sayısı (Son 24 Saat)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>İstanbul</td>
+            <td>85</td>
+          </tr>
+          <tr>
+            <td>İzmir</td>
+            <td>44</td>
+          </tr>
+          <tr>
+            <td>Ankara</td>
+            <td>50</td>
+          </tr>
+        </tbody>
+    </table>
+    <div class="chart-container">
+      <canvas id="cityComparisonChart"></canvas>
+    </div>
+
+  </div>
+
+  <script>
+    let map; // Harita objesini global yap
+
+    // Harita başlatma fonksiyonu
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 39.9334, lng: 32.8597 }, // Ankara (Türkiye'nin merkezi)
+        zoom: 7, // Başlangıç zoom seviyesi
+        mapId: 'DEMO_MAP_ID' // Google Cloud Console'da oluşturulan harita kimliği
+      });
+
+      // Örnek işaretçiler ekleyelim
+      const markers = [
+        { lat: 41.0082, lng: 28.9784, title: 'İstanbul: 85 Vaka', info: 'Öksürük, Ateş yaygın' },
+        { lat: 38.4237, lng: 27.1384, title: 'İzmir: 44 Vaka', info: 'Yüksek Ateş, Halsizlik yaygın' },
+        { lat: 39.9334, lng: 32.8597, title: 'Ankara: 50 Vaka', info: 'Boğaz Ağrısı yaygın' }
+      ];
+
+      markers.forEach(markerData => {
+        const marker = new google.maps.Marker({
+          position: { lat: markerData.lat, lng: markerData.lng },
+          map: map,
+          title: markerData.title,
+        });
+
+        // Bilgi penceresi ekle
+        const infoWindow = new google.maps.InfoWindow({
+          content: `<h3>${markerData.title}</h3><p>${markerData.info}</p>`
+        });
+
+        marker.addListener('click', () => {
+          infoWindow.open(map, marker);
+        });
+      });
+    }
+
+    // Google Maps API script'ini yükle
+    // 'YOUR_API_KEY' kısmını kendi API anahtarınızla DEĞİŞTİRİN!
+    // 'callback=initMap' harita yüklendiğinde initMap fonksiyonunu çağırır.
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+
+  <script>
+    // Chart.js grafikleri için JavaScript kodları (önceki haliyle aynı, sadece bazı font boyutları ayarlandı)
+    // İstanbul Chart
+    const istanbulCtx = document.getElementById('istanbulChart').getContext('2d');
+    new Chart(istanbulCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Kadıköy', 'Beşiktaş', 'Şişli', 'Fatih'],
+        datasets: [{
+          label: 'Vaka Sayısı',
+          data: [23, 19, 15, 28],
+          backgroundColor: '#3182ce',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'İstanbul İlçelerine Göre Vaka Sayısı',
+            font: { size: 16, weight: '600' } /* Grafik başlık font boyutu */
+          }
+        },
+        scales: { y: { beginAtZero: true, ticks: { stepSize: 5 } } }
+      }
+    });
+
+    // İzmir Chart
+    const izmirCtx = document.getElementById('izmirChart').getContext('2d');
+    new Chart(izmirCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Karşıyaka', 'Bornova', 'Konak', 'Buca'],
+        datasets: [{
+          label: 'Vaka Sayısı',
+          data: [12, 10, 14, 8],
+          backgroundColor: '#38a169',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'İzmir İlçelerine Göre Vaka Sayısı',
+            font: { size: 16, weight: '600' }
+          }
+        },
+        scales: { y: { beginAtZero: true, ticks: { stepSize: 2 } } }
+      }
+    });
+
+    // Ankara Chart
+    const ankaraCtx = document.getElementById('ankaraChart').getContext('2d');
+    new Chart(ankaraCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Çankaya', 'Keçiören', 'Yenimahalle', 'Mamak'],
+        datasets: [{
+          label: 'Vaka Sayısı',
+          data: [17, 11, 9, 13],
+          backgroundColor: '#dd6b20',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Ankara İlçelerine Göre Vaka Sayısı',
+            font: { size: 16, weight: '600' }
+          }
+        },
+        scales: { y: { beginAtZero: true, ticks: { stepSize: 2 } } }
+      }
+    });
+
+    // City Comparison Chart
+    const cityComparisonCtx = document.getElementById('cityComparisonChart').getContext('2d');
+    new Chart(cityComparisonCtx, {
+      type: 'bar',
+      data: {
+        labels: ['İstanbul', 'İzmir', 'Ankara'],
+        datasets: [{
+          label: 'Toplam Vaka Sayısı',
+          data: [85, 44, 50],
+          backgroundColor: [
+            '#3182ce', // İstanbul
+            '#38a169', // İzmir
+            '#dd6b20'  // Ankara
+          ],
+          borderRadius: 8
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Şehirlere Göre Toplam Vaka Sayısı (Son 24 Saat)',
+            font: { size: 18, weight: '700' }
+          }
+        },
+        scales: { y: { beginAtZero: true, ticks: { stepSize: 10 } } }
+      }
+    });
+  </script>
+</body>
+</html>

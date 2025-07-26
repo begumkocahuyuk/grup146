@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veri Girişi – Hastalık Takip Sistemi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f7fafc;
+      padding: 40px;
+      color: #2d3748;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      color: #2c5282;
+      margin-bottom: 40px;
+      font-weight: 800;
+    }
+
+    .form-card {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #4a5568;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e0;
+      border-radius: 8px;
+      font-size: 1em;
+      box-sizing: border-box; /* padding'in genişliği etkilememesi için */
+    }
+
+    textarea {
+        resize: vertical; /* Sadece dikey olarak boyutlandırılsın */
+        min-height: 100px;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(to right, #3182ce, #2b6cb0);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background: linear-gradient(to right, #2563eb, #2c5282);
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 25px;
+      background: #2b6cb0;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #2c5282;
+    }
+
+    .message {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: 600;
+        display: none; /* Varsayılan olarak gizli */
+    }
+
+    .message.success {
+        background-color: #e6fffa;
+        color: #38a169;
+        border: 1px solid #38a169;
+    }
+
+    .message.error {
+        background-color: #ffeaea;
+        color: #e53e3e;
+        border: 1px solid #e53e3e;
+    }
+
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      .container {
+        padding: 10px;
+      }
+      .form-card {
+        padding: 30px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px;
+      }
+      .btn-submit {
+        font-size: 1em;
+        padding: 12px;
+      }
+      .back-button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="dashboard.html" class="back-button">← Geri Dön</a>
+    <h1>📝 Yeni Hasta Verisi Girişi</h1>
+
+    <div class="form-card">
+      <form id="dataEntryForm">
+        <div class="form-group">
+          <label for="region">Bölge Seçiniz:</label>
+          <select id="region" required>
+            <option value="">-- Bölge Seç --</option>
+            <option value="istanbul">İstanbul</option>
+            <option value="izmir">İzmir</option>
+            <option value="ankara">Ankara</option>
+            <option value="adana">Adana</option>
+            <option value="bursa">Bursa</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="district">İlçe:</label>
+          <input type="text" id="district" placeholder="Örn: Kadıköy" required />
+        </div>
+
+        <div class="form-group">
+          <label for="age">Yaş:</label>
+          <input type="number" id="age" min="0" max="120" placeholder="Yaş (örn: 35)" required />
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Cinsiyet:</label>
+          <select id="gender" required>
+            <option value="">-- Seçiniz --</option>
+            <option value="erkek">Erkek</option>
+            <option value="kadin">Kadın</option>
+            <option value="diger">Diğer</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="symptoms">Belirtiler (Virgülle Ayırın):</label>
+          <textarea id="symptoms" placeholder="Örn: Öksürük, Ateş, Halsizlik" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="diagnosis">Tanı (Varsa):</label>
+          <input type="text" id="diagnosis" placeholder="Örn: Grip, Nezle" />
+        </div>
+
+        <div class="form-group">
+          <label for="onset_date">Semptom Başlangıç Tarihi:</label>
+          <input type="date" id="onset_date" required />
+        </div>
+
+        <button type="submit" class="btn-submit">Veriyi Kaydet</button>
+        <div id="responseMessage" class="message"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('dataEntryForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Formun varsayılan gönderimini engelle
+
+      // Basit bir örnek için form verilerini al
+      const region = document.getElementById('region').value;
+      const district = document.getElementById('district').value;
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+      const symptoms = document.getElementById('symptoms').value;
+      const diagnosis = document.getElementById('diagnosis').value;
+      const onsetDate = document.getElementById('onset_date').value;
+
+      const messageDiv = document.getElementById('responseMessage');
+      messageDiv.style.display = 'block'; // Mesaj div'ini göster
+
+      // Demo amaçlı başarılı/başarısız mesajı
+      if (region && district && age && gender && symptoms && onsetDate) {
+        messageDiv.className = 'message success';
+        messageDiv.innerText = 'Veri başarıyla kaydedildi! (Bu demo amaçlı bir mesajdır)';
+        // Gerçek bir uygulamada burada veriler backend'e gönderilir
+        // Örneğin: fetch('/api/save-data', { method: 'POST', body: JSON.stringify({ ...data }) });
+        this.reset(); // Formu sıfırla
+      } else {
+        messageDiv.className = 'message error';
+        messageDiv.innerText = 'Lütfen tüm zorunlu alanları doldurun.';
+      }
+    });
+  </script>
+</body>
+</html>

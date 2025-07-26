@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Semptom Analizi – Hastalık Takip Sistemi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f7fafc;
+      padding: 40px;
+      color: #2d3748;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      color: #2c5282;
+      margin-bottom: 40px;
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #3182ce;
+      margin-top: 50px;
+      margin-bottom: 25px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    thead {
+      background-color: #3182ce;
+      color: white;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    tbody tr:hover {
+      background-color: #edf2f7;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 25px;
+      background: #2b6cb0;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #2c5282;
+    }
+
+    .chart-container {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      th, td {
+        padding: 10px;
+      }
+      .container {
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      .back-button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="dashboard.html" class="back-button">← Geri Dön</a>
+    <h1>💬 Semptom Analizi ve Dağılımı</h1>
+
+    <h2>En Sık Görülen Semptomlar</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Semptom</th>
+          <th>Görülme Sayısı</th>
+          <th>Oran (%)</th>
+          <th>En Çok Görülen Bölgeler</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Öksürük</td>
+          <td>55</td>
+          <td>30%</td>
+          <td>İstanbul, Ankara</td>
+        </tr>
+        <tr>
+          <td>Ateş</td>
+          <td>48</td>
+          <td>26%</td>
+          <td>İzmir, İstanbul</td>
+        </tr>
+        <tr>
+          <td>Boğaz Ağrısı</td>
+          <td>32</td>
+          <td>17%</td>
+          <td>Ankara, İzmir</td>
+        </tr>
+        <tr>
+          <td>Halsizlik</td>
+          <td>25</td>
+          <td>14%</td>
+          <td>Tüm Bölgeler</td>
+        </tr>
+        <tr>
+          <td>Baş Ağrısı</td>
+          <td>18</td>
+          <td>10%</td>
+          <td>İstanbul, Ankara</td>
+        </tr>
+        <tr>
+          <td>Kas Ağrısı</td>
+          <td>7</td>
+          <td>3%</td>
+          <td>İzmir</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="chart-container">
+      <canvas id="symptomChart"></canvas>
+    </div>
+
+  </div>
+
+  <script>
+    const ctx = document.getElementById('symptomChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'pie', // Pasta grafik semptom oranları için ideal
+      data: {
+        labels: ['Öksürük', 'Ateş', 'Boğaz Ağrısı', 'Halsizlik', 'Baş Ağrısı', 'Kas Ağrısı'],
+        datasets: [{
+          label: 'Semptom Görülme Oranı',
+          data: [55, 48, 32, 25, 18, 7], // Veriler tablodaki "Görülme Sayısı" ile uyumlu
+          backgroundColor: [
+            '#3182ce', // Mavi
+            '#e53e3e', // Kırmızı
+            '#38a169', // Yeşil
+            '#dd6b20', // Turuncu
+            '#9f7aea', // Mor
+            '#4a5568'  // Gri
+          ],
+          hoverOffset: 10
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'right', // Sağ tarafta gösterge
+          },
+          title: {
+            display: true,
+            text: 'En Sık Görülen Semptomların Dağılımı (%)',
+            font: {
+              size: 20,
+              weight: '700'
+            }
+          },
+          tooltip: {
+              callbacks: {
+                  label: function(context) {
+                      let label = context.label || '';
+                      if (label) {
+                          label += ': ';
+                      }
+                      if (context.parsed !== null) {
+                          label += context.parsed + ' Vaka';
+                          // Oran hesaplaması
+                          let sum = 0;
+                          let dataArr = context.chart.data.datasets[0].data;
+                          dataArr.map(data => {
+                              sum += data;
+                          });
+                          let percentage = (context.parsed * 100 / sum).toFixed(1) + '%';
+                          label += ' (' + percentage + ')';
+                      }
+                      return label;
+                  }
+              }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

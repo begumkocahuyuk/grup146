@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontrol Paneli</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #f0f4f8;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #2c5282;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 800;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: #2d3748;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-icon {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <h1>👋 Hoş geldiniz, Sisteme Bağlandınız</h1>
+
+  <div class="grid">
+    <a href="heatmap.html" class="card">
+      <div class="card-icon">📍</div>
+      <div class="card-title">Isı Haritası</div>
+    </a>
+
+    <a href="symptoms.html" class="card">
+      <div class="card-icon">💬</div>
+      <div class="card-title">Semptom Analizi</div>
+    </a>
+
+    <a href="alerts.html" class="card">
+      <div class="card-icon">🚨</div>
+      <div class="card-title">Uyarı Paneli</div>
+    </a>
+
+    <a href="data-entry.html" class="card">
+      <div class="card-icon">📝</div>
+      <div class="card-title">Veri Girişi</div>
+    </a>
+  </div>
+</body>
+</html>
