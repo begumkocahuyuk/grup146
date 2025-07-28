@@ -59,7 +59,11 @@
     <div class="logo-icon">🩺</div>
     <h1>Hastalık Takip Sistemi</h1>
     <p>Bölgesel verilerle hastalıkları erkenden tespit edin, doktorlar zamanında müdahale etsin.</p>
-    <a href="login.html" class="btn">Sisteme Giriş Yap</a>
+        <form action="/dashboard" method="get">
+          <input type="hidden" name="username" value="{{ username }}">
+          <button type="submit">Sisteme Giriş Yap</button>
+        </form>
+
   </div>
 </body>
 </html>

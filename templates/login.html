@@ -58,12 +58,15 @@
 <body>
   <div class="login-box">
     <h2>Giriş Yap</h2>
-    <form id="loginForm">
-      <input type="text" id="username" placeholder="Kullanıcı Adı" required />
-      <input type="password" id="password" placeholder="Şifre" required />
+    <form method="post" action="/login">
+      <input type="text" id="username" name="username" placeholder="Kullanıcı Adı" required><br><br>
+      <input type="password" id="password" name="password" placeholder="Şifre" required><br><br>
       <button type="submit" class="btn">Giriş</button>
       <div class="error" id="errorMessage"></div>
     </form>
+        {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
   </div>
 
   <script>

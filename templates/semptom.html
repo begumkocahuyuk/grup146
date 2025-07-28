@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Semptom Analizi – Hastalık Takip Sistemi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f7fafc;
+      padding: 40px;
+      color: #2d3748;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      color: #2c5282;
+      margin-bottom: 40px;
+      font-weight: 800;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    thead {
+      background-color: #3182ce;
+      color: white;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    tbody tr:hover {
+      background-color: #edf2f7;
+    }
+    .chart-container {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💬 Semptom Analizi ve Dağılımı</h1>
+    <h2>Hoşgeldiniz, {{ username }}!</h2>
+
+    <h2>En Sık Görülen Hastalıklar</h2>
+    <table id="symptom-table">
+      <thead>
+        <tr>
+          <th>Hastalık</th>
+          <th>Görülme Sayısı</th>
+          <th>Oran (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set total = diagnosis_counts.values() | sum %}
+        {% for diagnosis, count in diagnosis_counts.items() %}
+          <tr>
+            <td>{{ diagnosis }}</td>
+            <td>{{ count }}</td>
+            <td>{{ '%.1f' % ((count / total * 100) if total > 0 else 0) }}%</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="chart-container">
+      <canvas id="symptomChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const diagnosisData = {
+      {% for diagnosis, count in diagnosis_counts.items() %}
+        "{{ diagnosis }}": {{ count }}{{ "," if not loop.last else "" }}
+      {% endfor %}
+    };
+
+    const labels = Object.keys(diagnosisData);
+    const values = Object.values(diagnosisData);
+
+    function generateColors(count) {
+      const colors = [];
+      for (let i = 0; i < count; i++) {
+        const r = Math.floor(Math.random() * 200 + 30);
+        const g = Math.floor(Math.random() * 200 + 30);
+        const b = Math.floor(Math.random() * 200 + 30);
+        colors.push(`rgb(${r},${g},${b})`);
+      }
+      return colors;
+    }
+
+    const ctx = document.getElementById('symptomChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Hastalık Görülme Oranları',
+          data: values,
+          backgroundColor: generateColors(values.length),
+          hoverOffset: 10
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'right' },
+          title: {
+            display: true,
+            text: 'Hastalık Görülme Oranları',
+            font: { size: 20, weight: '700' }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Girilen Vakalar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>{{ username }} kullanıcısının girilen vakaları:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Ad</th>
+                <th>Şehir</th>
+                <th>İlçe</th>
+                <th>Yaş</th>
+                <th>Cinsiyet</th>
+                <th>Semptomlar</th>
+                <th>Teşhis</th>
+                <th>Tarih</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for v in vakalar %}
+            <tr>
+                <td>{{ v.name }}</td>
+                <td>{{ v.sehir }}</td>
+                <td>{{ v.ilce }}</td>
+                <td>{{ v.age }}</td>
+                <td>{{ v.cinsiyet }}</td>
+                <td>{{ v.symptoms }}</td>
+                <td>{{ v.diagnosis }}</td>
+                <td>{{ v.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
