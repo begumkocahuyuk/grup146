@@ -129,3 +129,53 @@ Daily Scrum toplantılarının Google Meet veya Zoom üzerinden yapılması kara
 
 ---
 
+## 📋 Sprint 2
+### 🎯 Sprint Hedefi:
+Sprint 2'de, temel veri giriş arayüzünün, bölgesel vaka sayısı raporlama ekranlarının ve ana gezinme (dashboard) yapısının UI/UX prototiplerinin oluşturulması hedeflenmiştir.
+### 🔢 Tahmini Puan: 60  
+### ✅ Gerçekleşen Puan: 55
+
+Puanlama, işin karmaşıklığı, veri miktarı, teknik zorluk ve bağımlılıklar göz önüne alınarak belirlenmiştir. Küçük işler: 3 puan, orta işler: 5–8 puan, karmaşık işler: 13 puan üzerinden hesaplandı.
+### 🎯 Daily  Scrum:
+Daily Scrum toplantılarının Google Meet veya Zoom üzerinden yapılması kararlaştırılmıştır. Daily Scrum toplantımız Imgur'a eklenmiştir.[Ekran Görüntüleri için buraya tıklayın](https://imgur.com/a/EMr6MK5)
+### ✅ Tamamlananlar (Done):
+ * Yeni Hasta Veri Girişi Arayüzü Geliştirildi: İl, ilçe, yaş, cinsiyet, belirtiler, tanı ve semptom başlangıç tarihi alanlarını içeren form ekranı tasarlandı.
+ * Sisteme Giriş (Login) Arayüzü Oluşturuldu: Kullanıcı adı ve şifre girişine sahip bir giriş ekranı ve hatalı giriş uyarısı tasarlandı.
+ * Ana Dashboard ve Gezinme Arayüzü Tasarlandı: Sisteme giriş sonrası kullanıcıyı karşılayan ve ana modüllere (Isı Haritası, Semptom Analizi, Uyarı Paneli, Veri Girişi) yönlendiren ana ekran oluşturuldu.
+ * Bölgesel Vaka Sayısı Raporlama Arayüzleri Tamamlandı:
+   * İstanbul İlçelerine Göre Vaka Sayısı (tablo ve grafik) arayüzü.
+   * Ankara İlçelerine Göre Vaka Sayısı (tablo ve grafik) arayüzü.
+   * İzmir İlçelerine Göre Vaka Sayısı (tablo ve grafik) arayüzü.
+   * Farklı Bölgelere Göre Güncel Vaka Sayısı (tablo ve genel grafik) arayüzü.
+ * Sistem Tanıtım ve Giriş Sayfası Oluşturuldu: Projenin amacını belirten başlangıç sayfası hazırlandı.
+🔧 Devam Edenler (In Progress):
+ * Semptom Verisinin Ön İşlenmesi: Arayüzden girilen semptomların standartlaştırılması üzerine temel çalışmalar devam ediyor. (Sprint 1'den taşındı)
+ * UI/UX Tasarımının Figma Üzerinden Detaylandırılması: Tüm arayüzlerin tutarlı bir tasarım diline sahip olması için Figma çalışmaları sürüyor.
+### 📌 Yapılacaklar (To Do):
+ * Heatmap İçin Örnek Veri Hazırlanması: Harita üzerinde yoğunluk gösterimi için gerekli veri setinin oluşturulması.
+ * NLP ile Semptom Sınıflandırma Altyapısı Kurulması: Girilen semptomları kategorize etmek için Doğal Dil İşleme altyapısının kurulumu.
+ * Doktor Paneli Uyarı Mekanizması: Doktor panelindeki uyarılar için temel işlevselliklerin ve arayüzün belirlenmesi.
+ * Lokasyon Verisinin Harita Üzerinde Oturtulması: Bölgesel vaka verilerinin harita üzerinde görselleştirilmesi.
+### 🧐 Sprint Review
+ * Demo başarıyla tamamlandı ve ürün sahibine sunuldu.
+ * Hasta veri giriş formu ve bölgesel raporlama arayüzlerinin net ve kullanılabilir olduğu onaylandı.
+ * Giriş ve ana sayfa ekranlarının kullanıcı deneyimi açısından iyi bir temel oluşturduğu geri bildirimi alındı.
+ * Geri bildirim: Harita üzerindeki görsellik ve NLP çıktıları bir sonraki sprintte daha somut olarak gösterilmesi beklentisi dile getirildi.
+### 🔁 Sprint Retrospective
+İyi Gidenler:
+ * Takım içi görev paylaşımı ve iş birliği iyileşti.
+ * Trello üzerinden görev takibi disiplinli bir şekilde yürütüldü.
+İyileştirme Gerekenler:
+ * Puanlama tahminlerinde hala iyileşme alanı bulunuyor.
+ * Arayüzlerin backend entegrasyonu detayları daha erken netleştirilmeliydi.
+Kararlaştırılan Aksiyonlar:
+ * Günlük 15 dk stand-up zorunlu hale getirildi.
+ * UI kararları sprint başında ortaklaşa netleştirilecek.
+ * Bir sonraki sprintte backend entegrasyonuna öncelik verilecek.
+ <p align="center">
+  <img src="./assets/sprint2-1.jpeg" alt="Sprint2" width="800"/>
+  <img src="./assets/sprint2-2.jpeg" alt="Sprint2" width="800"/>
+  <img src="./assets/sprint2-3.jpeg" alt="Sprint2" width="800"/>
+  <img src="./assets/sprint2-4.jpeg" alt="Sprint2" width="800"/>
+
+</p>
