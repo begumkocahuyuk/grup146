@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontrol Paneli</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontrol Paneli - Hastalık Takip Sistemi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
+    /* Genel Sıfırlamalar ve Fontlar */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -13,11 +14,13 @@
       font-family: 'Inter', sans-serif;
     }
 
+    /* Body Arka Planı ve Dolgu */
     body {
       background: #f0f4f8;
       padding: 40px;
     }
 
+    /* Başlık Stil Ayarları */
     h1 {
       font-size: 28px;
       color: #2c5282;
@@ -26,39 +29,46 @@
       font-weight: 800;
     }
 
+    /* Grid Yapısı */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 25px;
       max-width: 1000px;
-      margin: 0 auto;
+      margin: 0 auto; /* Ortalamak için */
     }
 
+    /* Kart Stil Ayarları */
     .card {
       background: white;
       border-radius: 16px;
       padding: 30px 20px;
       text-align: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); /* Hafif gölge */
+      transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hover efekti için geçiş */
       cursor: pointer;
-      text-decoration: none;
       color: #2d3748;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none; /* Alt çizgiyi kaldır */
+      display: block; /* Tam alanı kaplaması için */
     }
 
+    /* Kartın Üzerine Gelindiğinde Efekt */
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px); /* Hafif yukarı kayma */
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08); /* Gölgeyi büyütme */
     }
 
+    /* Kart İkon Stil Ayarları */
     .card-icon {
-      font-size: 36px;
-      margin-bottom: 15px;
+      font-size: 36px; /* İkon boyutu */
+      margin-bottom: 15px; /* İkon ile başlık arası boşluk */
     }
 
+    /* Kart Başlık Stil Ayarları */
     .card-title {
       font-size: 1.1rem;
-      font-weight: 600;
     }
   </style>
 </head>
@@ -66,55 +76,30 @@
   <h1>👋 Hoş geldiniz, Sisteme Bağlandınız</h1>
 
   <div class="grid">
-      <form action="/heatmap" method="get">
-        <input type="hidden" name="username" value="{{ username }}">
-        <button type="submit">
-          <a  class="card">
-            <div class="card-icon">📍</div>
-            <div class="card-title">Isı Haritası</div>
-          </a>
-        </button>
-      </form>
-      <form action="/sempton" method="get">
-        <input type="hidden" name="username" value="{{ username }}">
-        <button type="submit">
-          <a  class="card">
-            <div class="card-icon">💬</div>
-            <div class="card-title">Semptom Analizi</div>
-          </a>
-        </button>
-      </form>
-      <form action="/alert" method="get">
-        <input type="hidden" name="username" value="{{ username }}">
-        <button type="submit">
-          <a  class="card">
-            <div class="card-icon">🚨</div>
-            <div class="card-title">Uyarı Paneli</div>
-          </a>
-        </button>
-      </form>
-      <form action="/data-entry" method="get">
-        <input type="hidden" name="username" value="{{ username }}">
-        <button type="submit">
-          <a  class="card">
-            <div class="card-icon">📝</div>
-            <div class="card-title">Veri Girişi</div>
-          </a>
-        </button>
-      </form>
-            <form action="/vakalar" method="get">
-        <input type="hidden" name="username" value="{{ username }}">
-        <button type="submit">
-          <a  class="card">
-            <div class="card-icon">📝</div>
-            <div class="card-title">Vakalar</div>
-          </a>
-        </button>
-      </form>
+    <a href="/heatmap?username={{ username }}" class="card">
+      <div class="card-icon">📍</div>
+      <div class="card-title">Isı Haritası</div>
+    </a>
 
+    <a href="/semptom?username={{ username }}" class="card">
+      <div class="card-icon">💬</div>
+      <div class="card-title">Semptom Analizi</div>
+    </a>
 
+    <a href="/alerts?username={{ username }}" class="card">
+  <div class="card-icon">🚨</div>
+  <div class="card-title">Uyarı Paneli</div>
+</a>
 
+    <a href="/data-entry?username={{ username }}" class="card">
+      <div class="card-icon">📝</div>
+      <div class="card-title">Veri Girişi</div>
+    </a>
 
+    <a href="/vakalar?username={{ username }}" class="card">
+      <div class="card-icon">📝</div>
+      <div class="card-title">Vakalar</div>
+    </a>
   </div>
 </body>
 </html>
