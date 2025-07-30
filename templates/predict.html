@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Veri Girişi – Hastalık Takip Sistemi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Sadece temel stil ve hizalama */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc; /* Hafif arka plan */
+            padding: 20px;
+            color: #333; /* Daha koyu metin rengi */
+        }
+
+        .container {
+            max-width: 600px; /* Biraz daha dar bir genişlik */
+            margin: 40px auto; /* Üstten ve alttan boşluk, ortala */
+            padding: 30px;
+            background: #fff;
+            border: 1px solid #ddd; /* Hafif bir çerçeve */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Hafif gölge */
+            border-radius: 8px; /* Köşeleri yuvarla */
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #1a202c; /* Başlık için koyu renk */
+            margin-bottom: 30px;
+            text-align: left; /* Sola hizalı */
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 15px; /* Gruplar arası boşluk */
+            display: flex; /* Label ve inputu aynı satıra almak için */
+            align-items: baseline; /* Metin taban çizgisinde hizala */
+        }
+
+        label {
+            width: 150px; /* Label'lar için sabit genişlik */
+            min-width: 120px; /* Küçük ekranlarda esnek olabilir */
+            display: inline-block; /* Yan yana durması için */
+            margin-right: 10px;
+            font-weight: 600;
+            color: #4a5568;
+            flex-shrink: 0; /* Küçülmesini engelle */
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        textarea {
+            flex-grow: 1; /* Geri kalan alanı doldur */
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95em;
+            box-sizing: border-box; /* Padding genişliği etkilemesin */
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px; /* Biraz daha kısa */
+        }
+
+        input[readonly] {
+            background-color: #eee; /* Salt okunur alan için arka plan */
+            cursor: not-allowed;
+        }
+
+        .button-group { /* Butonları kapsayan bir div */
+            margin-top: 20px;
+            text-align: left; /* Butonları sola hizala */
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            display: inline-block; /* Yan yana durması için */
+            margin-right: 10px; /* Butonlar arası boşluk */
+        }
+
+        .btn-predict {
+            background-color: #4CAF50; /* Yeşil */
+            color: white;
+        }
+
+        .btn-predict:hover {
+            background-color: #45a049;
+        }
+
+        .btn-submit {
+            background-color: #008CBA; /* Mavi */
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background-color: #007bb5;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .message.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        /* Responsive düzenlemeler */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 20px auto;
+            }
+            .form-group {
+                flex-direction: column; /* Küçük ekranlarda alt alta */
+                align-items: flex-start;
+            }
+            label {
+                width: auto; /* Genişliği kaldır */
+                margin-bottom: 5px; /* Label altına boşluk */
+            }
+            button {
+                width: 100%; /* Mobil cihazlarda butonlar tam genişlik */
+                margin-right: 0;
+                margin-bottom: 10px; /* Butonlar arası dikey boşluk */
+            }
+            .button-group {
+                display: flex; /* Butonları alt alta sıralamak için */
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Yeni Hasta Verisi Girişi</h1>
+
+        <form id="dataEntryForm">
+            <input type="hidden" name="username" value="{{ username }}">
+            
+            <div class="form-group">
+                <label for="name">İsim Soyisim:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="sehir">Şehir:</label>
+                <input type="text" id="sehir" name="sehir" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ilce">İlçe:</label>
+                <input type="text" id="ilce" name="ilce" placeholder="Örn: Kadıköy" required />
+            </div>
+
+            <div class="form-group">
+                <label for="age">Yaş:</label>
+                <input type="number" id="age" name="age" min="0" max="120" placeholder="Yaş (örn: 35)" required />
+            </div>
+
+            <div class="form-group">
+                <label for="cinsiyet">Cinsiyet:</label>
+                <input type="text" id="cinsiyet" name="cinsiyet" placeholder="Erkek/Kadın" required>
+            </div>
+
+            <div class="form-group">
+                <label for="symptoms">Belirtiler (Virgülle Ayırın):</label>
+                <textarea id="symptoms" name="symptoms" placeholder="Örn: Öksürük, Ateş, Halsizlik" required></textarea>
+            </div>
+            
+            <div class="button-group">
+                <button type="button" id="predictDiagnosisBtn" class="btn-predict">Tanı Tahmin Et</button>
+            </div>
+
+            <div class="form-group" style="margin-top: 15px;"> 
+                <label for="diagnosis">Tanı (Yapay Zeka Tahmini):</label>
+                <input type="text" name="diagnosis" id="diagnosis" placeholder="Yapay zeka tarafından doldurulacak" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="onset_date">Semptom Başlangıç Tarihi:</label>
+                <input type="date" name="date" id="onset_date" required />
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn-submit">Veriyi Kaydet</button>
+            </div>
+            
+            <div id="responseMessage" class="message"></div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('dataEntryForm');
+            const predictBtn = document.getElementById('predictDiagnosisBtn');
+            const symptomsInput = document.getElementById('symptoms');
+            const diagnosisInput = document.getElementById('diagnosis');
+            const messageDiv = document.getElementById('responseMessage');
+
+            // --- "Tanı Tahmin Et" Butonu İşlevselliği ---
+            predictBtn.addEventListener('click', async function() {
+                const symptoms = symptomsInput.value.trim();
+
+                if (!symptoms) {
+                    showMessage('Lütfen belirtileri girin.', 'error');
+                    return;
+                }
+
+                showMessage('Tanı tahmin ediliyor...', 'info');
+                diagnosisInput.value = ''; // Önceki tanıyı temizle
+
+                try {
+                    // Yapay Zeka (Gemini) API'sine istek gönderme
+                    // BURAYI KENDİ BACKEND API'NİZİN ENDPOINT'İ İLE GÜNCELLEYİN!
+                    const response = await fetch('/predict_diagnosis', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            symptoms: symptoms,
+                            age: document.getElementById('age').value,
+                            gender: document.getElementById('cinsiyet').value
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        const predictedDiagnosis = data.diagnosis || 'Tanı bulunamadı.';
+                        diagnosisInput.value = predictedDiagnosis;
+                        showMessage('Tanı başarıyla tahmin edildi!', 'success');
+                    } else {
+                        showMessage(data.error || 'Tanı tahmini yapılırken bir hata oluştu.', 'error');
+                        diagnosisInput.value = 'Hata: ' + (data.error || 'Tahmin edilemedi');
+                    }
+
+                } catch (error) {
+                    console.error('Tanı tahmini hatası:', error);
+                    showMessage('Sunucuyla iletişim kurulurken bir hata oluştu. Lütfen daha sonra tekrar deneyin.', 'error');
+                    diagnosisInput.value = 'Bağlantı Hatası';
+                }
+            });
+
+            // --- "Veriyi Kaydet" Butonu İşlevselliği ---
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const formData = {
+                    name: document.getElementById('name').value,
+                    sehir: document.getElementById('sehir').value,
+                    ilce: document.getElementById('ilce').value,
+                    age: document.getElementById('age').value,
+                    cinsiyet: document.getElementById('cinsiyet').value,
+                    symptoms: symptomsInput.value,
+                    diagnosis: diagnosisInput.value, // Otomatik doldurulan tanı burada alınacak
+                    date: document.getElementById('onset_date').value,
+                    username: form.querySelector('input[name="username"]').value
+                };
+
+                // Zorunlu alan kontrolü (Basit bir örnek)
+                const requiredFields = ['name', 'sehir', 'ilce', 'age', 'cinsiyet', 'symptoms', 'diagnosis', 'date'];
+                for (const field of requiredFields) {
+                    if (!formData[field]) {
+                        showMessage('Lütfen tüm zorunlu alanları doldurun.', 'error');
+                        return;
+                    }
+                }
+
+                showMessage('Veri kaydediliyor...', 'info');
+
+                try {
+                    // Veriyi backend sunucusuna gönderme (kaydetme)
+                    // BURAYI KENDİ BACKEND API'NİZİN ENDPOINT'İ İLE GÜNCELLEYİN!
+                    const response = await fetch('/data-entry', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        showMessage(result.message || 'Veri başarıyla kaydedildi!', 'success');
+                        form.reset(); // Formu sıfırla
+                        diagnosisInput.value = ''; // Tanı alanını da temizle
+                    } else {
+                        showMessage(result.error || 'Veri kaydedilirken bir hata oluştu.', 'error');
+                    }
+
+                } catch (error) {
+                    console.error('Veri kaydetme hatası:', error);
+                    showMessage('Sunucuyla iletişim kurulurken bir hata oluştu. Lütfen daha sonra tekrar deneyin.', 'error');
+                }
+            });
+
+            function showMessage(text, type) {
+                messageDiv.className = `message ${type}`;
+                messageDiv.innerText = text;
+                messageDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

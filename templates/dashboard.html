@@ -35,7 +35,7 @@
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 25px;
       max-width: 1000px;
-      margin: 0 auto; /* Ortalamak için */
+      margin: 0 auto;
     }
 
     /* Kart Stil Ayarları */
@@ -44,26 +44,26 @@
       border-radius: 16px;
       padding: 30px 20px;
       text-align: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); /* Hafif gölge */
-      transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hover efekti için geçiş */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
       color: #2d3748;
       font-size: 1rem;
       font-weight: 600;
-      text-decoration: none; /* Alt çizgiyi kaldır */
-      display: block; /* Tam alanı kaplaması için */
+      text-decoration: none;
+      display: block;
     }
 
-    /* Kartın Üzerine Gelindiğinde Efekt */
+    /* Kart Hover Efekti */
     .card:hover {
-      transform: translateY(-4px); /* Hafif yukarı kayma */
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08); /* Gölgeyi büyütme */
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
     }
 
     /* Kart İkon Stil Ayarları */
     .card-icon {
-      font-size: 36px; /* İkon boyutu */
-      margin-bottom: 15px; /* İkon ile başlık arası boşluk */
+      font-size: 36px;
+      margin-bottom: 15px;
     }
 
     /* Kart Başlık Stil Ayarları */
@@ -87,9 +87,9 @@
     </a>
 
     <a href="/alerts?username={{ username }}" class="card">
-  <div class="card-icon">🚨</div>
-  <div class="card-title">Uyarı Paneli</div>
-</a>
+      <div class="card-icon">🚨</div>
+      <div class="card-title">Uyarı Paneli</div>
+    </a>
 
     <a href="/data-entry?username={{ username }}" class="card">
       <div class="card-icon">📝</div>
@@ -99,6 +99,11 @@
     <a href="/vakalar?username={{ username }}" class="card">
       <div class="card-icon">📝</div>
       <div class="card-title">Vakalar</div>
+    </a>
+
+    <a href="/predict?username={{ username }}" class="card">
+      <div class="card-icon">🔮</div>
+      <div class="card-title">Tahmin</div>
     </a>
   </div>
 </body>
