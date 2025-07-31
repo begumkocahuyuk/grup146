@@ -4,8 +4,14 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 from starlette.status import HTTP_303_SEE_OTHER
+from dotenv import load_dotenv
+import google.generativeai as genai
 import os
-
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.messages import HumanMessage, AIMessage
+import markdown
+from bs4 import BeautifulSoup
+import json
 app = FastAPI(
     title="Hastalık Takip Sistemi",
     description="FastAPI ve Jinja2 kullanılarak geliştirilmiş bir hastalık takip ve analiz sistemi.",
@@ -125,23 +131,28 @@ def post_data_entry(
     age: str = Form(...),
     cinsiyet: str = Form(...),
     symptoms: str = Form(...),
-    diagnosis: str = Form(...),
     date: str = Form(...),
     username: str = Form(...)
 ):
     try:
+        diagnosis = create_todo_with_gemini(age, cinsiyet, symptoms)
+        update_result = update_json_data(sehir, diagnosis)
         with open("veriler.txt", "a", encoding="utf-8") as f:
             f.write(f"{name},{sehir},{ilce},{age},{cinsiyet},{symptoms},{diagnosis},{date},{username}\n")
-        message = "Veri başarıyla kaydedildi!"
+
+        # ✅ Başarılıysa direkt dashboard sayfasına yönlendir
+        return RedirectResponse(url=f"/dashboard?username={username}", status_code=303)
+
     except Exception as e:
         message = f"Veri kaydedilirken hata oluştu: {e}"
         print(f"Error writing to veriler.txt: {e}")
 
-    return templates.TemplateResponse("data-entry.html", {
-        "request": request,
-        "message": message,
-        "username": username
-    })
+        # Hata varsa aynı sayfada mesajla göster
+        return templates.TemplateResponse("data-entry.html", {
+            "request": request,
+            "message": message,
+            "username": username
+        })
 
 @app.get("/vakalar", response_class=HTMLResponse)
 def get_vakalar(request: Request, username: str = Query(None)):
@@ -176,9 +187,63 @@ def get_vakalar(request: Request, username: str = Query(None)):
         "vakalar": vakalar
     })
 
-# ✅ YENİ: Tahmin Sayfası (Predict)
-@app.get("/predict", response_class=HTMLResponse)
-def get_predict_page(request: Request, username: str = Query(None)):
-    if not username:
-        return RedirectResponse(url="/login", status_code=HTTP_303_SEE_OTHER)
-    return templates.TemplateResponse("predict.html", {"request": request, "username": username})
+
+# Sahte kullanıcı verisi
+def markdown_to_text(markdown_string):
+    html = markdown.markdown(markdown_string)
+    soup = BeautifulSoup(html, "html.parser")
+    text = soup.get_text()
+    return text
+
+
+def create_todo_with_gemini(age: str, gender: str, symptoms: str):
+    load_dotenv()
+    api_key = os.environ.get('GOOGLE_API_KEY')
+    if not api_key:
+        raise ValueError("GOOGLE_API_KEY not set in environment variables")
+
+    genai.configure(api_key=api_key)
+    llm = ChatGoogleGenerativeAI(model="models/gemini-1.5-flash")    
+    prompt_intro = (
+        f"A patient reported the following symptoms: {symptoms}. Age: {age}, Gender: {gender}. "
+        "Based on this information, predict the disease in only one word. "
+        "Reply with a disease name in Turkish. Do not provide any explanation."
+    )
+
+    response = llm.invoke(
+        [
+            HumanMessage(content="You are a medical expert."),
+            HumanMessage(content=prompt_intro),
+        ]
+    )
+    return markdown_to_text(response.content)
+
+def update_json_data(sehir, diagnosis):
+    json_path = "harita-veri.json"
+
+    if not os.path.exists(json_path):
+        data = []
+    else:
+        with open(json_path, "r", encoding="utf-8") as f:
+            try:
+                data = json.load(f)
+            except json.JSONDecodeError:
+                data = []
+
+    for item in data:
+        if item["sehir"] == sehir and item["tani"] == diagnosis:  # düzeltildi
+            item["kisi_sayisi"] += 1
+            break
+    else:
+        data.append({
+            "sehir": sehir,
+            "tani": diagnosis,
+            "kisi_sayisi": 1
+        })
+
+    try:
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        return True
+    except Exception as e:
+        return f"JSON yazma hatası: {e}"

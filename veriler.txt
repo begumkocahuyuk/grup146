@@ -4,3 +4,11 @@ test,test2,test,1,test2,test2,test2,2025-01-01,begum
 test,test,test3,1,test,test,test,0001-01-01,begum
 sedef,MALATYA,BATTALGAZİ,29,kadın,ateş,öksürük,nezle,2025-07-29,begum
 sedef,MALATYA,BATTALGAZİ,29,kadın,ateş,öksürük,nezle,2025-07-29,begum
+test4,test,test,1,test,test,test,2025-01-01,begum
+Ahmet,İstanbul,Pendik,45,erkek,şiddetli öksürük,"Şiddetli öksürük" şikayetiyle gelen 45 yaşında bir erkek hastada birçok farklı durum söz konusu olabilir.  Akla gelenler arasında;  üst solunum yolu enfeksiyonları (soğuk algınlığı, grip), bronşit (bronşların iltihabı), zatürre (akciğer iltihabı), alerjik reaksiyonlar ve hatta astım gibi kronik akciğer hastalıkları yer alabilir.  Kesin tanı için fizik muayene, kan tahlili ve gerekirse akciğer grafisi gibi ek tetkikler gereklidir.  Öksürüğün süresi, karakteri (balgamlı mı, kuru mu) ve eşlik eden diğer şikayetler (ateş, nefes darlığı, göğüs ağrısı) tanı koymada çok önemlidir.,2025-07-07,begum
+Ahmet,İstanbul,Pendik,50,erkek, Ateş boğaz ağrısı halsizlik baş ağrısı,Grip,2025-07-21,begum
+Ahmet,İstanbul,Pendik,45,erkek,Ateş boğaz ağrısı halsizlik baş ağrısı,Grip,2025-07-07,begum
+Ali,İstanbul,Pendik,45,erkek,Ateş boğaz ağrısı halsizlik baş ağrısı,Grip,2025-07-07,begum
+Aslı,İstanbul,Pendik,45,kadın,Ateş boğaz ağrısı halsizlik baş ağrısı,,Grip,2025-07-23,begum
+Fatma,İstanbul,Pendik,20,kadın,Ateş boğaz ağrısı halsizlik baş ağrısı,Grip,2025-07-22,begum
+Aslı,Erzurum,Oltu,40,kadın,Ateş boğaz ağrısı halsizlik baş ağrısı,Grip,2025-07-28,begum
