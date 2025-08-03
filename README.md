@@ -178,4 +178,65 @@ Kararlaştırılan Aksiyonlar:
   <img src="./assets/sprint2-3.jpeg" alt="Sprint2" width="800"/>
   <img src="./assets/sprint2-4.jpeg" alt="Sprint2" width="800"/>
 
+## 📋 Sprint 3 (Final Sprint)
+
+### 🎯 Sprint Hedefi:
+Sprint 3’te odak, **backend geliştirmeleri**, **veri işleme süreçleri** ve **yapay zeka modüllerinin tamamlanması** üzerine yoğunlaştırıldı. Harita entegrasyonu, NLP altyapısı ve doktor uyarı sistemi fonksiyonel hale getirildi. Sistem genel testleriyle birlikte proje tamamlandı.
+
+### 🔢 Tahmini Puan: 50  
+### ✅ Gerçekleşen Puan: 50
+
+Puanlama, işin karmaşıklığı, veri miktarı, teknik zorluk ve bağımlılıklar göz önüne alınarak yapılmıştır.
+
+---
+
+### ✅ Tamamlananlar (Done):
+
+- **Heatmap İçin Örnek Veri Hazırlandı ve Entegre Edildi:** Harita üzerinde vaka yoğunluğu başarıyla görselleştirildi. Testler sonucunda doğru dağılım doğrulandı.
+- **NLP ile Semptom Sınıflandırma Altyapısı Kuruldu:** Geliştirilen NLP modeli ile girilen serbest metin semptomlar kategorize edilerek hastalık tahmini desteklendi.
+- **Doktor Paneli Uyarı Mekanizması Geliştirildi:** Lokasyon bazlı artışlarda doktor paneline uyarılar gönderiliyor. Testlerde başarılı sonuçlar alındı.
+- **Lokasyon Verisi Harita Üzerinde Oturtuldu:** İl ve ilçe seviyesinde vaka verileri harita üzerinde gösterildi.
+- **Sistem Genel Testleri Tamamlandı:** Kullanıcı arayüzleri, veri işleme, harita ve uyarı sistemleri test edildi. Herhangi bir sorunla karşılaşılmadı.
+- **Son UI/UX Güncellemeleri Uygulandı:** Figma tasarımıyla uyumlu, kullanıcı dostu arayüzler oluşturuldu.
+
+---
+
+### 🧐 Sprint Review
+
+- Tüm sistem bileşenleri eksiksiz olarak çalışmaktadır.
+- Demo başarıyla tamamlandı, kullanıcı akışı senaryoları test edildi.
+- Sistemin MVP (Minimum Viable Product) versiyonu tamamlanmış ve teslim edilmeye hazır hale geldi.
+
+---
+
+### 🔁 Sprint Retrospective
+
+**İyi Gidenler:**
+- Sprint planlamasına sadık kalındı, tüm işler zamanında tamamlandı.
+- Teknik zorluklar ekip içi iş birliğiyle hızlıca aşıldı.
+- Test süreçleri dikkatli yürütüldü, hatalar minimum düzeydeydi.
+
+**İyileştirme Gerekenler:**
+- Bazı modüller için erken entegrasyon yapılabilirdi.
+- İleri düzey test senaryoları için daha fazla zaman planlanmalıydı.
+
+**Kararlaştırılan Aksiyonlar:**
+- Proje sunumu öncesinde final kontrol listesi oluşturulacak.
+- Tüm kodlar, dokümantasyon ve demo senaryoları tek bir klasörde arşivlenecek.
+- Proje sonrası kısa bir kapanış toplantısı yapılacak.
+
+---
+
+<p align="center">
+  <img src="./assets/final-sprint1.jpeg" alt="Final Sprint" width="800"/>
+  <img src="./assets/final-sprint2.jpeg" alt="Final Sprint" width="800"/>
+</p>
+
+---
+
+🎉 **Proje başarıyla tamamlandı!**  
+Tüm işlevler entegre edilerek sistem sorunsuz şekilde çalışır hale getirildi.  
+Doktorlar, hasta verilerini analiz edebiliyor; harita üzerinden vaka yoğunluğunu görebiliyor ve uyarılarla yönlendirilebiliyor.
+
+
 </p>
