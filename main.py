@@ -20,12 +20,16 @@ app = FastAPI(
 
 app.add_middleware(SessionMiddleware, secret_key="cok-gizli-oturum-anahtari_burayi_degistirin")
 
+# static/ klasörünü statik dosyalar için mount et
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 templates = Jinja2Templates(directory="templates")
 
 # Sahte kullanıcı verisi
 fake_users = {
     "begum": {"username": "begum", "password": "1234"},
-    "admin": {"username": "admin", "password": "admin123"}
+    "admin": {"username": "admin", "password": "admin123"},
+    "merve": {"username": "merve", "password": "12345"},
 }
 
 @app.get("/", response_class=HTMLResponse)
@@ -219,7 +223,8 @@ def create_todo_with_gemini(age: str, gender: str, symptoms: str):
     return markdown_to_text(response.content)
 
 def update_json_data(sehir, diagnosis):
-    json_path = "harita-veri.json"
+    json_path = os.path.join("static", "harita-veri.json")
+
 
     if not os.path.exists(json_path):
         data = []

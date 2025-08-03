@@ -1,0 +1,292 @@
+[
+  {
+    "sehir": "İstanbul",
+    "tani": "Grip",
+    "kisi_sayisi": 20
+  },
+  {
+    "sehir": "Ankara",
+    "tani": "Bronşit",
+    "kisi_sayisi": 10
+  },
+  {
+    "sehir": "Ağrı",
+    "tani": "Bronşit",
+    "kisi_sayisi": 10
+  },
+  {
+    "sehir": "İzmir",
+    "tani": "Migren",
+    "kisi_sayisi": 15
+  },
+  {
+    "sehir": "Bursa",
+    "tani": "Grip",
+    "kisi_sayisi": 8
+  },
+  {
+    "sehir": "Adana",
+    "tani": "Grip",
+    "kisi_sayisi": 8
+  },
+  {
+    "sehir": "Adana",
+    "tani": "Zatürre",
+    "kisi_sayisi": 5
+  },
+  {
+    "sehir": "Konya",
+    "tani": "Covid-19",
+    "kisi_sayisi": 6
+  },
+  {
+    "sehir": "Gaziantep",
+    "tani": "Soğukalgınlığı",
+    "kisi_sayisi": 12
+  },
+  {
+    "sehir": "Siirt",
+    "tani": "Soğukalgınlığı",
+    "kisi_sayisi": 12
+  },
+  {
+    "sehir": "Antalya",
+    "tani": "Felç",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Bitlis",
+    "tani": "Felç",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Trabzon",
+    "tani": "Astım",
+    "kisi_sayisi": 4
+  },
+  {
+    "sehir": "Erzurum",
+    "tani": "Grip",
+    "kisi_sayisi": 3
+  },
+  {
+    "sehir": "Samsun",
+    "tani": "Bronşit",
+    "kisi_sayisi": 6
+  },
+  {
+    "sehir": "Kayseri",
+    "tani": "Migren",
+    "kisi_sayisi": 7
+  },
+  {
+    "sehir": "Diyarbakır",
+    "tani": "Migren",
+    "kisi_sayisi": 7
+  },
+  {
+    "sehir": "Mersin",
+    "tani": "Astım",
+    "kisi_sayisi": 4
+  },
+  {
+    "sehir": "Eskişehir",
+    "tani": "Zatürre",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Bitlis",
+    "tani": "Zatürre",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Malatya",
+    "tani": "Grip",
+    "kisi_sayisi": 10
+  },
+  {
+    "sehir": "Manisa",
+    "tani": "Soğukalgınlığı",
+    "kisi_sayisi": 4
+  },
+  {
+    "sehir": "Sivas",
+    "tani": "Covid-19",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Balıkesir",
+    "tani": "Migren",
+    "kisi_sayisi": 5
+  },
+  {
+    "sehir": "Denizli",
+    "tani": "Bronşit",
+    "kisi_sayisi": 4
+  },
+  {
+    "sehir": "Aydın",
+    "tani": "Astım",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Kırklareli",
+    "tani": "Astım",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Kocaeli",
+    "tani": "Grip",
+    "kisi_sayisi": 9
+  },
+  {
+    "sehir": "Hatay",
+    "tani": "Zatürre",
+    "kisi_sayisi": 3
+  },
+  {
+    "sehir": "Hatay",
+    "tani": "Böbbrek Taşı",
+    "kisi_sayisi": 3
+  },
+  {
+    "sehir": "Tekirdağ",
+    "tani": "Migren",
+    "kisi_sayisi": 6
+  },
+  {
+    "sehir": "Ordu",
+    "tani": "Bronşit",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Çankırı",
+    "tani": "Bronşit",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Çankırı",
+    "tani": "Böbrek Yetmezliği",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Muğla",
+    "tani": "Bronşit",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Muğla",
+    "tani": "Astım",
+    "kisi_sayisi": 3
+  },
+  {
+    "sehir": "Van",
+    "tani": "Covid-19",
+    "kisi_sayisi": 4
+  },
+  {
+    "sehir": "Şanlıurfa",
+    "tani": "Soğukalgınlığı",
+    "kisi_sayisi": 7
+  },
+  {
+    "sehir": "Afyonkarahisar",
+    "tani": "Felç",
+    "kisi_sayisi": 1
+  },
+  {
+    "sehir": "Kastamonu",
+    "tani": "Felç",
+    "kisi_sayisi": 1
+  },
+  {
+    "sehir": "Kastamonu",
+    "tani": "Böbrek Yetmezliği",
+    "kisi_sayisi": 1
+  },
+  {
+    "sehir": "Şanlıurfa",
+    "tani": "Felç",
+    "kisi_sayisi": 1
+  },
+  {
+    "sehir": "Yalova",
+    "tani": "Romatizma",
+    "kisi_sayisi": 3
+  },
+  {
+    "sehir": "Kars",
+    "tani": "Diyabet",
+    "kisi_sayisi": 5
+  },
+  {
+    "sehir": "Nevşehir",
+    "tani": "Hipertansiyon",
+    "kisi_sayisi": 4
+  },
+  {
+    "sehir": "Karabük",
+    "tani": "Alerji",
+    "kisi_sayisi": 6
+  },
+  {
+    "sehir": "Giresun",
+    "tani": "Sedef Hastalığı",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Uşak",
+    "tani": "Tiroid",
+    "kisi_sayisi": 3
+  },
+  {
+    "sehir": "Bilecik",
+    "tani": "Anemi",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Düzce",
+    "tani": "Epilepsi",
+    "kisi_sayisi": 1
+  },
+  {
+    "sehir": "Ardahan",
+    "tani": "Romatizma",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Bartın",
+    "tani": "Diyabet",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Iğdır",
+    "tani": "Hipertansiyon",
+    "kisi_sayisi": 1
+  },
+  {
+    "sehir": "Kilis",
+    "tani": "Alerji",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Aksaray",
+    "tani": "Sedef Hastalığı",
+    "kisi_sayisi": 1
+  },
+  {
+    "sehir": "Bayburt",
+    "tani": "Tiroid",
+    "kisi_sayisi": 1
+  },
+  {
+    "sehir": "Yozgat",
+    "tani": "Anemi",
+    "kisi_sayisi": 2
+  },
+  {
+    "sehir": "Kırıkkale",
+    "tani": "Epilepsi",
+    "kisi_sayisi": 1
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "Adana": { "tani": "Hipertansiyon", "kisi": 320 },
+  "İstanbul": { "tani": "Diyabet", "kisi": 850 },
+  "İzmir": { "tani": "Astım", "kisi": 430 },
+  "Konya": [{ "tani": "KOAH", "kisi": 150 }, { "tani": "Öksürük", "kisi": 100 }],
+  "AFYONKARAHİSAR": { "tani": "Migren", "kisi": 300 }
+}

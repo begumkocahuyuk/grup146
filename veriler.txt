@@ -12,3 +12,8 @@ Ali,İstanbul,Pendik,45,erkek,Ateş boğaz ağrısı halsizlik baş ağrısı,Gr
 Aslı,İstanbul,Pendik,45,kadın,Ateş boğaz ağrısı halsizlik baş ağrısı,,Grip,2025-07-23,begum
 Fatma,İstanbul,Pendik,20,kadın,Ateş boğaz ağrısı halsizlik baş ağrısı,Grip,2025-07-22,begum
 Aslı,Erzurum,Oltu,40,kadın,Ateş boğaz ağrısı halsizlik baş ağrısı,Grip,2025-07-28,begum
+merve,Adana,sldkf,1,Kadın,Öksürük,Soğukalgınlığı,2025-08-29,begum
+ayşe,Van,Merkez,4,kadın,Baş ağrısı, bel ağrısı,Grip,2025-08-30,begum
+Ahmet,Antalya,Anamur,8,Erkek,sol kolda uyuşma,Felç,2025-08-15,begum
+Berk,Antalya,Merkez,9,Erkek,Şiddetli baş ağrısı, kusma,Migren,2025-08-28,begum
+Hamit Aslan,İstanbul,Merkez,40,Erkek,Grip,Grip,2025-08-03,merve
